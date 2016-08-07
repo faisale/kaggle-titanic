@@ -1,11 +1,11 @@
-# kaggle-titanic
+# Titanic: Machine Learning from Disaster
 Predictive analysis of the [titanic dataset](https://www.kaggle.com/c/titanic) on Kaggle.
 
 Features were engineered using the approach in the tutorials. Missing values for the 'Embarked' column were imputed by looking at the most popular embarked location from the passenger's Pclass (there were only two missing values, both females from Pclass 1). The first model tested was a random forest. Note that I chose not to use the model "myfirstforest.py", instead analyzing validation accuracy based on modyfing parameters. Beginning with the number of trees using the entropy function:
 
 ![Figure1](https://github.com/faisale/kaggle-titanic/blob/master/images/tree_accuracy_entropy.png?raw=true)
 
-We can see that the accuracy saturates extremely fast, somewhere around 90 trees, although the noise decreases afterwards. Next up was testing the accruacy using the gini function:
+We can see that the accuracy saturates extremely fast, somewhere around 90 trees, although the noise decreases afterwards. When you have a certain number of features, there are only so many types of trees to build. Once you reach that limit, you'll end up with trees that are identical to each other. Next up was testing the accruacy using the gini function:
 
 ![Figure2](https://github.com/faisale/kaggle-titanic/blob/master/images/tree_accuracy_gini.png?raw=true)
 
@@ -17,7 +17,7 @@ Best performance was tied with five, six and eight features. I went ahead with f
 
 ![Figure4](https://github.com/faisale/kaggle-titanic/blob/master/images/min_leaf_sample.png?raw=true)
 
-It seems that the accuracy sharply declines as the minium number of leaf increases. This could be due to the small amount of features and the simplicity of the feature relationships.
+It seems that the accuracy sharply declines as the minium number of leaf increases. Big trees tend to overfit as they pass a point where they begin relying to the quirks of the training set for their prediction.
 
 Using a random forest with 185 trees, 5 features and a minimum leaf sample of 2 brought an accuracy of 0.76555. We'll come back to this later, but for now, let's analyze the gender survival count:
 
